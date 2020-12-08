@@ -12,131 +12,130 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 app.get("",(req,res)=>{
-    res.send("Hello world!");
+    res.send("Hello World");
 });
-
 app.post("/add",(req,res)=>{
-    const num1=req.body.num1;
-    const num2=req.body.num2;
-    if(typeof(num1)!="number" || typeof(num2)!="number"){
+        const num1 = req.body.num1;
+        const num2 = req.body.num2;
+        if(typeof(num1) != "number" || typeof(num2) != "number"){
+            res.send({
+                status: 'error',
+                message: "Invalid data types"
+            });
+        }else{
+            const sum1 = num1+num2;
+            if(sum1 >= 999999 || num1>=999999 || num2>=999999){
+                res.send({
+                    status: 'error',
+                    message: "Overflow",
+                });
+            }else if(sum1 <= -999999 || num1 <= -999999 || num2 <= -999999){
+                res.send({
+                    status: 'error',
+                    message: "Underflow"
+                });
+            }else{
+                res.status(200).send({
+                message: "the sum of given two numbers",
+                sum: sum1
+            });
+        }
+    }
+});
+        
+app.post('/sub',(req,res)=>{
+    const num1 = req.body.num1;
+    const num2 = req.body.num2;
+    if(typeof(num1) != "number" || typeof(num2) != "number"){
         res.send({
-            status:'error',
-            message:"Invalid data types"
+            status: 'error',
+            message: "Invalid data types"
         });
     }else{
-        const sum1=num1+num2;
-        if(sum1>=999999 || num1>=999999 || num2>=999999){
+        const sub = num1-num2;
+        if(sub > 1000000 || num1>1000000 || num2>1000000){
             res.send({
-                status:'error',
-                message:"Overflow",
+                status: 'error',
+                message: "Overflow",
             });
-        }else if(sum1<= -999999 || num1<= -999999 || num2<= -999999){
+        }else if(sub < -1000000 || num1 < -1000000 || num2 < -1000000){
             res.send({
-                status:'error',
-                message:"Underflow"
+                status: 'error',
+                message: "Underflow"
             });
         }else{
             res.status(200).send({
-                message:"the sum of given numbers",
-                sum:sum1
+                status: 'success',
+                message: "the difference of given two numbers",
+                difference: sub
             });
         }
     }
 });
-
-app.post('/sub',(req,res)=>{
-    const num1=req.body.num1;
-    const num2=req.body.num2;
-    if(typeof(num1)!="number" || typeof(num2)!="number"){
-        res.send({
-            status:'error',
-            message:"Invalid data types"
-        })
-    }else{
-        const difference1=num1-num2;
-        if(difference1>=1000000 || num1>=1000000 || num2>=1000000){
-            res.send({
-                status:'error',
-                message:"Overflow",
-            })
-        }else if(difference1<= -1000000 || num1<= -1000000 || num2<= -1000000){
-            res.send({
-                status:'error',
-                message:"Underflow"
-            })
-        }else{
-            res.status(200).send({
-                status:'success',
-                message:"the difference of given two numbers",
-                difference:difference1
-            })
-        }
-    }
-})
-
 app.post("/multiply",(req,res)=>{
-    const num1=req.body.num1;
-    const num2=req.body.num2;
-    if(typeof(num1)!="number" || typeof(num2)!="number"){
+    const num1 = req.body.num1;
+    const num2 = req.body.num2;
+    if(typeof(num1) != "number" || typeof(num2) != "number"){
         res.send({
-            status:'error',
-            message:"Invalid data types"
-        })
+            status: 'error',
+            message: "Invalid data types"
+        });
     }else{
-        const multiply1=num1*num2;
-        if(multiply1>=999999 || num1>=999999 || num2>=999999){
+        const mul = num1*num2;
+        if(mul >= 999999 || num1 >= 999999 || num2 >= 999999){
             res.send({
-                status:'error',
-                message:"Overflow",
-            })
-        }else if(multiply1<= -999999 || num1<= -999999 || num2<= -999999){
+                status: 'error',
+                message: "Overflow"
+            });
+        }else if(mul <= -999999 || num1 <= -999999 || num2 <= -999999){
             res.send({
-                status:'error',
-                message:"Underflow"
-            })
+                status: 'error',
+                message: "Underflow"
+            });
         }else{
             res.status(200).send({
-                message:"The product of given numbers",
-                result:multiply1
-            })
+                message: "The product of given numbers",
+                result: mul
+            });
         }
     }
-})
-
+});
 app.post("/divide",(req,res)=>{
-    const num1=req.body.num1;
-    const num2=req.body.num2;
-    if(typeof(num1)!="number" || typeof(num2)!="number"){
+    const num1 = req.body.num1;
+    const num2 = req.body.num2;
+    if(typeof(num1) != "number" || typeof(num2) != "number"){
         res.send({
-            status:'error',
-            message:"Invalid data types"
-        })
+            status: 'error',
+            message: "Invalid data types"
+        });
     }else if(num2 === 0){
         res.send({
             status: 'error',
             message: "Cannot divide by zero"
         });
     }else{
-        const divide1=num1/num2;
-        if(divide1>=999999 || num1>=999999 || num2>=999999){
+        const div = num1/num2;
+        if(div >= 999999 || num1 >= 999999 || num2 >= 999999){
             res.send({
-                status:'error',
-                message:"Overflow",
-            })
-        }else if(divide1<= -999999 || num1<= -999999 || num2<= -999999){
+                status: 'error',
+                message: "Overflow"
+            });
+        }else if(div <= -999999 || num1 <= -999999 || num2 <= -999999){
             res.send({
-                status:'error',
-                message:"Underflow"
-            })
+                status: 'error',
+                message: "Underflow"
+            });
         }else{
             res.status(200).send({
-                message:"The division of given numbers",
-                result:divide1
-            })
+                message: "The division of given numbers",
+                result: div
+            });
         }
     }
-})
+});
+// your code goes here
+
+
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
 module.exports = app;
-
