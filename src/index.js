@@ -44,7 +44,7 @@ app.post("/add",(req,res)=>{
     }
 })
 
-app.post("/sub",(req,res)=>{
+app.post('/sub',(req,res)=>{
     const num1=req.body.num1;
     const num2=req.body.num2;
     if(typeof(num1)!="number" || typeof(num2)!="number"){
@@ -59,13 +59,14 @@ app.post("/sub",(req,res)=>{
                 status:'error',
                 message:"Overflow",
             })
-        }else if(difference1<= -999999 || num1<= -999999 || num2<= -999999){
+        }else if(difference1<= -1000000 || num1<= -1000000 || num2<= -1000000){
             res.send({
                 status:'error',
                 message:"Underflow"
             })
         }else{
             res.status(200).send({
+                status:'success',
                 message:"the difference of given two numbers",
                 difference:difference1
             })
@@ -88,7 +89,7 @@ app.post("/multiply",(req,res)=>{
                 status:'error',
                 message:"Overflow",
             })
-        }else if(multiply1<= -99999 || num1<= -99999 || num2<= -99999){
+        }else if(multiply1<= -999999 || num1<= -999999 || num2<= -999999){
             res.send({
                 status:'error',
                 message:"Underflow"
@@ -122,7 +123,7 @@ app.post("/divide",(req,res)=>{
                 status:'error',
                 message:"Overflow",
             })
-        }else if(divide1<= -99999 || num1<= -99999 || num2<= -99999){
+        }else if(divide1<= -999999 || num1<= -999999 || num2<= -999999){
             res.send({
                 status:'error',
                 message:"Underflow"
