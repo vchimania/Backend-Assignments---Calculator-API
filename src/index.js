@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
-app.get("/home",(req,res)=>{
+app.get("",(req,res)=>{
     res.send("Hello world!");
 });
 
