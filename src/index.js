@@ -22,27 +22,27 @@ app.post("/add",(req,res)=>{
         res.send({
             status:'error',
             message:"Invalid data types"
-        })
+        });
     }else{
         const sum1=num1+num2;
         if(sum1>=999999 || num1>=999999 || num2>=999999){
             res.send({
                 status:'error',
                 message:"Overflow",
-            })
+            });
         }else if(sum1<= -999999 || num1<= -999999 || num2<= -999999){
             res.send({
                 status:'error',
                 message:"Underflow"
-            })
+            });
         }else{
             res.status(200).send({
                 message:"the sum of given numbers",
                 sum:sum1
-            })
+            });
         }
     }
-})
+});
 
 app.post('/sub',(req,res)=>{
     const num1=req.body.num1;
@@ -54,7 +54,7 @@ app.post('/sub',(req,res)=>{
         })
     }else{
         const difference1=num1-num2;
-        if(difference1>=999999 || num1>=999999 || num2>=999999){
+        if(difference1>=1000000 || num1>=1000000 || num2>=1000000){
             res.send({
                 status:'error',
                 message:"Overflow",
