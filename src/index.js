@@ -21,16 +21,16 @@ app.post("/add",(req,res)=>{
     if(typeof(num1)!="number" || typeof(num2)!="number"){
         res.send({
             status:'error',
-            message:"Invalid datatype"
+            message:"Invalid data types"
         })
     }else{
         const sum1=num1+num2;
-        if(sum1>=99999 || num1>=99999 || num2>=99999){
+        if(sum1>=999999 || num1>=999999 || num2>=999999){
             res.send({
                 status:'error',
                 message:"Overflow",
             })
-        }else if(sum1<= -99999 || num1<= -99999 || num2<= -99999){
+        }else if(sum1<= -999999 || num1<= -999999 || num2<= -999999){
             res.send({
                 status:'error',
                 message:"Underflow"
@@ -50,16 +50,16 @@ app.post("/sub",(req,res)=>{
     if(typeof(num1)!="number" || typeof(num2)!="number"){
         res.send({
             status:'error',
-            message:"Invalid datatype"
+            message:"Invalid data types"
         })
     }else{
         const difference1=num1-num2;
-        if(difference1>=99999 || num1>=99999 || num2>=99999){
+        if(difference1>=999999 || num1>=999999 || num2>=999999){
             res.send({
                 status:'error',
                 message:"Overflow",
             })
-        }else if(difference1<= -99999 || num1<= -99999 || num2<= -99999){
+        }else if(difference1<= -999999 || num1<= -999999 || num2<= -999999){
             res.send({
                 status:'error',
                 message:"Underflow"
@@ -79,11 +79,11 @@ app.post("/multiply",(req,res)=>{
     if(typeof(num1)!="number" || typeof(num2)!="number"){
         res.send({
             status:'error',
-            message:"Invalid datatype"
+            message:"Invalid data types"
         })
     }else{
         const multiply1=num1*num2;
-        if(multiply1>=99999 || num1>=99999 || num2>=99999){
+        if(multiply1>=999999 || num1>=999999 || num2>=999999){
             res.send({
                 status:'error',
                 message:"Overflow",
@@ -108,7 +108,7 @@ app.post("/divide",(req,res)=>{
     if(typeof(num1)!="number" || typeof(num2)!="number"){
         res.send({
             status:'error',
-            message:"Invalid datatype"
+            message:"Invalid data types"
         })
     }else if(num2 === 0){
         res.send({
@@ -117,7 +117,7 @@ app.post("/divide",(req,res)=>{
         });
     }else{
         const divide1=num1/num2;
-        if(divide1>=99999 || num1>=99999 || num2>=99999){
+        if(divide1>=999999 || num1>=999999 || num2>=999999){
             res.send({
                 status:'error',
                 message:"Overflow",
